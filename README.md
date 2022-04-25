@@ -1,2 +1,3 @@
 # hra-cxg-supporting-information
-HRA CxG 
+
+See <https://cns-iu.github.io/hra-cxg-supporting-information/> for more information.
