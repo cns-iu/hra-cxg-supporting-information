@@ -10,7 +10,7 @@ from doi_api_functions import *
 
 def fetch_Metadata():
     print('Fetching Data...')
-    adapter = HTTPAdapter(max_retries=3)  # Hard-coded 3 Max Retries
+    adapter = HTTPAdapter(max_retries=3)  # 3 Max Retries
     https = requests.Session()
     https.mount("https://", adapter)
     CELLXGENE_PRODUCTION_ENDPOINT = 'https://api.cellxgene.cziscience.com'

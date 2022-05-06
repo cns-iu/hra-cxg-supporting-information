@@ -9,7 +9,7 @@ def get_HCA_dataframe():
     # Creates HCA Dataframe.
     hca_data = get_HCA_data()
     hca_df = create_HCA_dataframe(hca_data)
-    print(hca_df)
+    #print(hca_df)
     return hca_df
 
 
@@ -17,26 +17,8 @@ def get_CXG_dataframe():
     # Creates CZI CXG dataframe.
     all_collections = fetch_Metadata()
     cxg_df = create_CXG_dataframe(all_collections)
-    print(cxg_df)
+    #print(cxg_df)
     return cxg_df
-
-
-def label_dataset_columns(master_df, cxg_df, hca_df):
-    lower_hca_list = [ds_name.lower() for ds_name in hca_df.loc[:,'doi_id']]
-    lower_cxg_list = [ds_name.lower() for ds_name in cxg_df.loc[:,'doi_id']]
-    for i in range(master_df.shape[0]):
-        doi_id = str(master_df.loc[i, 'doi_id']).lower()
-        master_df.loc[i, 'HCA + CellXGene'] = 1 if ((doi_id in lower_cxg_list) and (doi_id in lower_hca_list)) else 0
-        master_df.loc[i, 'HCA portal'] = 1 if (doi_id in lower_hca_list) else 0
-        master_df.loc[i, 'CellXGene portal'] = 1 if (doi_id in lower_cxg_list) else 0
-    master_df['CellXGene portal'] = master_df['CellXGene portal'].astype(int)
-    master_df['HCA portal'] = master_df['HCA portal'].astype(int)
-    master_df['HCA + CellXGene'] = master_df['HCA + CellXGene'].astype(int)
-    
-    master_df.insert(2, 'CellXGene portal', master_df.pop('CellXGene portal'))
-    master_df.insert(3, 'HCA portal', master_df.pop('HCA portal'))
-    master_df.insert(4, 'HCA + CellXGene', master_df.pop('HCA + CellXGene'))
-    return master_df
 
 
 def compare_CXG_HCA(cxg_df, hca_df):
