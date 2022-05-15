@@ -84,6 +84,7 @@ if __name__ == '__main__':
         hca_df.to_excel(file_location + '/excel/hca_data.xlsx', )
         master_df.to_excel(file_location + '/excel/cxg_hca_comparison.xlsx',)
         print('\nCreated Tables successfully!')
+        
     except Exception as e:
         print('Exception occured : ', e)
 
